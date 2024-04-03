@@ -12,6 +12,7 @@ def do_it(fic):
 	csv_file(d, "suv.csv")
 	e = sortie_resultats(h)
 	csv_file(e, "uh.csv")
+	print (d, e)
 
 def parse_file():
 	parser = argparse.ArgumentParser()
