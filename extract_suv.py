@@ -7,8 +7,10 @@ fichier = "20200527152905.861802.ig.tum"
 def do_it(fic):
 	lines = ouverture_fichier(fic)	
 	m = extract_SUV(lines)
-	d = {el[0]: float(el[1]) for el in m}
-	print (d)
+	h = extract_HU(lines)
+	d = sortie_resultats(m)
+	e = sortie_resultats(h)
+	print (d, e)
 
 def parse_file():
 	parser = argparse.ArgumentParser()
@@ -19,10 +21,18 @@ def extract_SUV(chaine):
 	m = re.findall("(M.*)(?<!RC)SUVValue = (\d+\.\d+)", chaine, re.M)
 	return m
 
+def extract_HU(chaine):
+	h = re.findall("(M.*)HUValue = (\d+(\.\d+)?)", chaine, re.M)
+	return h
+
 def ouverture_fichier(fic) :
 	with open(fic, "r") as f :
 		lines = f.read()
 	return lines
+
+def sortie_resultats(results):
+	d = {el[0]: float(el[1]) for el in results}
+	return d
 
 if __name__ == "__main__":
 	fic = parse_file()
