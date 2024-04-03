@@ -22,3 +22,4 @@ if __name__ == "__main__":
 	fic = parse_file()
 	print(fic.fichier)
 	do_it(fic.fichier)
+
